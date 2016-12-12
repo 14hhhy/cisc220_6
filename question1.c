@@ -72,15 +72,15 @@ usleep(20000);}} //sleep for 20000 microseconds (20 milliseconds)
 int main() {
 dispCars(); //display initial screen
 char input[2];
-fgets(input,sizeof(input),stdin); //waits for user input
+while (input[0]!='\n') { //waits for ENTER to be hit to start threads
+fgets(input,sizeof(input),stdin);} //waits for user input
 pthread_t thread0,thread1,thread2,thread3,thread4,thread5;
-if (input[0]=='\n') { //intiates threads when ENTER is hit
 pthread_create(&thread1, NULL, carOne, NULL);
 pthread_create(&thread2, NULL, carTwo, NULL);
 pthread_create(&thread3, NULL, carThree, NULL);
 pthread_create(&thread4, NULL, carFour, NULL);
 pthread_create(&thread5, NULL, carFive, NULL);
-pthread_create(&thread0, NULL, draw, NULL);}
+pthread_create(&thread0, NULL, draw, NULL);
 pthread_join(thread0, NULL); //waits for draw thread to finish
 dispCars();
 int win; //winning lane
